@@ -31,7 +31,6 @@ class _SplashState extends State<Splash> {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset("assets/images/splash_logo.png", fit: BoxFit.cover),
             Image.asset("assets/images/splash_text.png", fit: BoxFit.cover),
