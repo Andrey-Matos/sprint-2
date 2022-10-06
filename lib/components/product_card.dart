@@ -1,64 +1,82 @@
 import 'package:flutter/material.dart';
 
-class OrgsSpotlightCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   final String img;
-  final String price;
+  final int price;
   final String title;
+  final double height;
+  final double width;
 
-  OrgsSpotlightCard(
-      {required this.title, required this.img, required this.price});
+  const ProductCard({
+    super.key,
+    required this.title,
+    required this.img,
+    required this.price,
+    required this.height,
+    required this.width,
+  });
 
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 16, 24, 40),
-      child: Container(
-        width: 183,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 16, 16, 16),
-          child: Column(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    child: Container(
-                      child: Image.asset(img),
-                      width: 120,
+        padding: EdgeInsets.only(right: 36),
+        child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            // color: Colors.black,
+            height: widget.height,
+            width: widget.width,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //padding: EdgeInsets.only(left: 56),
+                Stack(children: [
+                  //padding: EdgeInsets.only(left: 56),
+                  Padding(
+                    padding: EdgeInsets.only(left: 110, top: 6, right: 6),
+                    child: TextButton(
+                      onPressed: () {},
+                      //style: TextButton.styleFrom(backgroundColor: Colors.black),
+                      child: Image.asset(
+                        'assets/images/fav_button.png',
+                      ),
                     ),
                   ),
-                  SizedBox(height: 13),
-                  Text(
-                    title,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                  ),
-                  SizedBox(height: 5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '₦$price',
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () => {},
-                        child: Icon(Icons.add),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+                  Padding(
+                      padding: EdgeInsets.fromLTRB(36, 22, 36, 0),
+                      child: Image.asset(widget.img))
+                ]),
+                const SizedBox(
+                  height: 13,
+                ),
+                Padding(
+                    padding: EdgeInsets.only(left: 16),
+                    child: Text(
+                      widget.title,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )),
+                //const SizedBox(
+                //  height: 13,
+                //),
+                Padding(
+                    padding: EdgeInsets.only(left: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('\$${widget.price}'),
+                        TextButton(
+                            onPressed: () {},
+                            child: Image.asset('assets/images/add_button.png'))
+                      ],
+                    ))
+              ],
+            )));
   }
 }
