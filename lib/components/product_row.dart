@@ -12,7 +12,7 @@ class ProductRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromARGB(255, 247, 245, 245),
+      //color: Color.fromARGB(255, 247, 245, 245),
       child: SingleChildScrollView(
           scrollDirection: Axis.horizontal, child: Row(children: cards)),
     );

@@ -35,7 +35,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 child: Text(
                   textAlign: TextAlign.start,
                   'What is your first name?',
-                  style: TextStyle(fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
               ),
               Padding(

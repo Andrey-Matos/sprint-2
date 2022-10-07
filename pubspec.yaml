@@ -82,7 +82,7 @@ flutter:
       - asset: fonts/bold.otf
         weight: 500
       - asset: fonts/thin.otf
-        weight: 400
+        weight: 300
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

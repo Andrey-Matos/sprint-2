@@ -6,6 +6,7 @@ class ProductCard extends StatefulWidget {
   final String title;
   final double height;
   final double width;
+  final Color bg_color;
 
   const ProductCard({
     super.key,
@@ -14,6 +15,7 @@ class ProductCard extends StatefulWidget {
     required this.price,
     required this.height,
     required this.width,
+    this.bg_color = const Color.fromARGB(255, 255, 255, 255),
   });
 
   @override
@@ -27,7 +29,7 @@ class _ProductCardState extends State<ProductCard> {
         padding: EdgeInsets.only(right: 36),
         child: Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: widget.bg_color,
               borderRadius: BorderRadius.circular(10),
             ),
             // color: Colors.black,
@@ -40,7 +42,7 @@ class _ProductCardState extends State<ProductCard> {
                 Stack(children: [
                   //padding: EdgeInsets.only(left: 56),
                   Padding(
-                    padding: EdgeInsets.only(left: 110, top: 6, right: 6),
+                    padding: EdgeInsets.only(left: 100, right: 6),
                     child: TextButton(
                       onPressed: () {},
                       //style: TextButton.styleFrom(backgroundColor: Colors.black),
@@ -50,32 +52,37 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                   ),
                   Padding(
-                      padding: EdgeInsets.fromLTRB(36, 22, 36, 0),
-                      child: Image.asset(widget.img))
+                      padding: EdgeInsets.only(
+                          top: widget.height / 9, left: widget.width / 4.1),
+                      child: SizedBox(
+                          height: widget.height / 2.28,
+                          width: widget.width / 1.9,
+                          child: Image.asset(widget.img, fit: BoxFit.fill)))
                 ]),
-                const SizedBox(
-                  height: 13,
-                ),
-                Padding(
-                    padding: EdgeInsets.only(left: 16),
-                    child: Text(
-                      widget.title,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )),
-                //const SizedBox(
-                //  height: 13,
-                //),
-                Padding(
-                    padding: EdgeInsets.only(left: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('\$${widget.price}'),
-                        TextButton(
-                            onPressed: () {},
-                            child: Image.asset('assets/images/add_button.png'))
-                      ],
-                    ))
+                Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                          padding: EdgeInsets.only(left: 16),
+                          child: Text(
+                            widget.title,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )),
+                      Padding(
+                          padding: EdgeInsets.only(
+                            left: 16,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('\$${widget.price}'),
+                              TextButton(
+                                  onPressed: () {},
+                                  child: Image.asset(
+                                      'assets/images/add_button.png'))
+                            ],
+                          ))
+                    ])
               ],
             )));
   }

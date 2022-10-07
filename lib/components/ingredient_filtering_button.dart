@@ -19,6 +19,7 @@ class _IngredientFilteringButtonState extends State<IngredientFilteringButton> {
       ),
       onPressed: () {},
       style: OutlinedButton.styleFrom(
+        backgroundColor: Colors.white,
         foregroundColor: Color.fromARGB(255, 51, 51, 51),
         shadowColor: Colors.grey,
         shape: const RoundedRectangleBorder(

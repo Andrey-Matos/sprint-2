@@ -14,7 +14,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         body: Column(children: [
       Container(
-        height: 450,
         width: double.infinity,
         decoration: BoxDecoration(color: Color.fromARGB(255, 255, 164, 81)),
         child: Stack(alignment: Alignment.center, children: [
@@ -32,15 +31,23 @@ class _HomeScreenState extends State<HomeScreen> {
           const Padding(
             padding: EdgeInsets.only(left: 24, top: 40.0, right: 52),
             child: Text(
-              textAlign: TextAlign.start,
-              'Get The Freshest Fruit Salad Combo',
-            ),
+                textAlign: TextAlign.start,
+                'Get The Freshest Fruit Salad Combo',
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: Color.fromARGB(255, 39, 33, 77))),
           ),
           const Padding(
             padding: EdgeInsets.only(left: 24, top: 8.0, right: 52),
             child: Text(
-                textAlign: TextAlign.start,
-                'We deliver the best and freshest fruit salad in town. Order for a combo today!!!'),
+              textAlign: TextAlign.start,
+              'We deliver the best and freshest fruit salad in town. Order for a combo today!!!',
+              style: TextStyle(
+                fontSize: 16,
+                color: Color.fromARGB(255, 93, 87, 126),
+              ),
+            ),
           ),
         ],
       ),
