@@ -4,7 +4,13 @@ class AddToBasketScreen extends StatefulWidget {
   final String title;
   int quantity = 0;
   final String price;
-  AddToBasketScreen({super.key, required this.title, required this.price});
+  final List ingredients;
+
+  AddToBasketScreen(
+      {super.key,
+      required this.title,
+      required this.price,
+      required this.ingredients});
 
   @override
   State<AddToBasketScreen> createState() => _AddToBasketScreenState();
