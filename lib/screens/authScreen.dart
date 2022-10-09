@@ -1,8 +1,11 @@
+import 'package:desafio_2/screens/homeScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AuthScreen extends StatefulWidget {
-  const AuthScreen({Key? key}) : super(key: key);
+  final TextEditingController _name = TextEditingController();
+
+  AuthScreen({Key? key}) : super(key: key);
 
   @override
   _AuthScreenState createState() => _AuthScreenState();
@@ -29,12 +32,14 @@ class _AuthScreenState extends State<AuthScreen> {
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Padding(
                 padding: EdgeInsets.only(left: 24, top: 40.0, right: 52),
-                child: Text(
+                child: TextField(
+                  controller: widget._name,
                   textAlign: TextAlign.start,
-                  'What is your first name?',
+                  decoration:
+                      InputDecoration(labelText: 'What is your first name?'),
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
               ),
@@ -72,7 +77,12 @@ class _AuthScreenState extends State<AuthScreen> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       backgroundColor: Color.fromARGB(255, 255, 164, 81)),
-                  onPressed: () => {},
+                  onPressed: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()))
+                      },
                   child: Text('Start Ordering')),
             ),
           )
