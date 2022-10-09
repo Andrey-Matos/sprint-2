@@ -48,7 +48,10 @@ class OrderCompleteScreen extends StatelessWidget {
                   backgroundColor: Color.fromARGB(255, 255, 164, 81),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10))),
-              onPressed: () {},
+              onPressed: () {
+                int count = 0;
+                Navigator.of(context).popUntil((_) => count++ >= 2);
+              },
               child: Text('Continue Shopping'),
             ),
           ),
