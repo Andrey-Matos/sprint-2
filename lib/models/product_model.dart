@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 
 class Product {
   String title;
-  Image image;
+  String image;
   String price;
   String description;
   bool isFavorite;
   List ingredients;
+  String type;
 
   Product({
+    required this.type,
     required this.title,
     required this.image,
     required this.price,
@@ -16,4 +18,6 @@ class Product {
     required this.isFavorite,
     required this.ingredients,
   });
+
+  static toList(productMap) => productMap.values.toList();
 }
