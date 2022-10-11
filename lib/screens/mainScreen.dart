@@ -2,9 +2,12 @@ import 'package:desafio_2/components/product_card.dart';
 import 'package:flutter/material.dart';
 import '../components/product_row.dart';
 import '../components/ingredient_filtering_row.dart';
+import '../data/product_map.dart';
+import 'orderListScreen.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  final String username;
+  const MainScreen(this.username);
 
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -13,21 +16,22 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 247, 245, 245),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            const SizedBox(height: 54),
+            const SizedBox(height: 24),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const SizedBox(
                   width: 22,
                 ),
-                const Text(
-                  'Welcome, [first-name].',
+                Text(
+                  'Welcome, ${widget.username}.',
                   style: TextStyle(color: Color.fromARGB(255, 39, 33, 77)),
                 ),
                 const SizedBox(
@@ -42,7 +46,13 @@ class _MainScreenState extends State<MainScreen> {
                     )
                   ]),
                   child: ElevatedButton(
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  OrderListScreen(cartList: [])))
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       shape: const CircleBorder(),
@@ -60,12 +70,15 @@ class _MainScreenState extends State<MainScreen> {
               height: 50,
             ),
             const IngredientFilteringButtons(),
-            const SizedBox(
-              height: 40,
+            SizedBox(
+              height: height / 25,
             ),
             const Padding(
-                padding: EdgeInsets.only(right: 161),
-                child: Text('Recommended Combo')),
+                padding: EdgeInsets.only(right: 151),
+                child: Text(
+                  'Recommended Combo',
+                  style: TextStyle(fontSize: 18),
+                )),
             const SizedBox(
               height: 6,
             ),
@@ -77,27 +90,57 @@ class _MainScreenState extends State<MainScreen> {
                   color: const Color.fromARGB(255, 255, 164, 81),
                 )),
             SizedBox(height: 16),
-            ProductRow(cards: const [
+            ProductRow(cards: [
               ProductCard(
-                  height: 183,
-                  width: 152,
+                  scaleFactor: 1.3,
                   title: 'Honey Lime Combo',
                   img: 'assets/images/honey_lime.png',
-                  price: 2000),
+                  price: '2000'),
               ProductCard(
-                  height: 183,
-                  width: 152,
+                  scaleFactor: 1.3,
                   title: 'Berry Mango Combo',
                   img: 'assets/images/berry_mango.png',
-                  price: 6000),
+                  price: '6000'),
               ProductCard(
-                  height: 183,
-                  width: 152,
+                  scaleFactor: 1.3,
                   title: 'mock',
                   img: 'assets/images/honey_lime.png',
-                  price: 14000)
+                  price: '14000')
             ]),
-            SizedBox(height: 100),
+            Padding(
+                padding: EdgeInsets.only(top: height / 25, right: 58),
+                child: ButtonBar(children: [
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Hottest',
+                        style: TextStyle(color: Colors.grey[500]),
+                      )),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Popular',
+                        style: TextStyle(color: Colors.grey[500]),
+                      )),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'New Combo',
+                        style: TextStyle(color: Colors.grey[500]),
+                      )),
+                ])),
+            ProductRow(cards: [
+              ProductCard(
+                  scaleFactor: 1.20,
+                  title: 'Berry Mango Combo',
+                  img: 'assets/images/berry_mango.png',
+                  price: '6000'),
+              ProductCard(
+                  scaleFactor: 1.2,
+                  title: 'mock',
+                  img: 'assets/images/honey_lime.png',
+                  price: '14000')
+            ])
           ],
         ),
       ),

@@ -1,9 +1,9 @@
+import 'package:desafio_2/screens/authScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -11,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
     return Scaffold(
         body: Column(children: [
       Container(
@@ -28,8 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 24, top: 40.0, right: 52),
+          Padding(
+            padding: EdgeInsets.only(left: 24, top: height * 0.04, right: 52),
             child: Text(
                 textAlign: TextAlign.start,
                 'Get The Freshest Fruit Salad Combo',
@@ -38,8 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontWeight: FontWeight.w500,
                     color: Color.fromARGB(255, 39, 33, 77))),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 24, top: 8.0, right: 52),
+          Padding(
+            padding: EdgeInsets.only(left: 24, top: height * 0.01, right: 52),
             child: Text(
               textAlign: TextAlign.start,
               'We deliver the best and freshest fruit salad in town. Order for a combo today!!!',
@@ -62,7 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     backgroundColor: Color.fromARGB(255, 255, 164, 81)),
-                onPressed: () => {},
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AuthScreen())),
                 child: Text('Let\'s Continue')),
           ))
     ]));

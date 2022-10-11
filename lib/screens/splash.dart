@@ -11,7 +11,6 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     startTime();
   }
@@ -28,14 +27,21 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Image.asset("assets/images/splash_logo.png", fit: BoxFit.cover),
-            Image.asset("assets/images/splash_text.png", fit: BoxFit.cover),
-          ],
-        ),
+      body: Stack(
+        children: <Widget>[
+          Padding(
+              padding: EdgeInsets.only(
+                  top: height * .4, left: width * .35, right: width * .35),
+              child: Image.asset("assets/images/splash_logo.png")),
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                width * .24, height * .54, width * .24, height * .31),
+            child: Image.asset("assets/images/splash_text.png"),
+          )
+        ],
       ),
     );
   }

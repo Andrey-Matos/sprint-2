@@ -1,24 +1,23 @@
 import 'package:desafio_2/data/product_map.dart';
 import 'package:desafio_2/providers/cartProvider.dart';
 import 'package:desafio_2/screens/addToBasketScreen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ProductCard extends StatefulWidget {
   final String img;
-  final int price;
+  final String price;
   final String title;
-  final double height;
-  final double width;
   final Color bg_color;
+  final double scaleFactor;
 
-  const ProductCard({
+  ProductCard({
     super.key,
     required this.title,
     required this.img,
     required this.price,
-    required this.height,
-    required this.width,
+    required this.scaleFactor,
     this.bg_color = const Color.fromARGB(255, 255, 255, 255),
   });
 
@@ -29,17 +28,19 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Consumer<CartProvider>(
         builder: (context, provider, child) => Padding(
-            padding: EdgeInsets.only(right: 36),
+            padding: EdgeInsets.only(right: width / 10),
             child: Container(
                 decoration: BoxDecoration(
                   color: widget.bg_color,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 // color: Colors.black,
-                height: widget.height,
-                width: widget.width,
+                height: (height / 5) * widget.scaleFactor,
+                width: (width / 3) * widget.scaleFactor,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -57,11 +58,11 @@ class _ProductCardState extends State<ProductCard> {
                       ),
                       Padding(
                           padding: EdgeInsets.only(
-                              top: widget.height / 9, left: widget.width / 4.1),
+                              top: height / 35, left: width / 8),
                           child: SizedBox(
-                              height: widget.height / 2.28,
-                              width: widget.width / 1.9,
-                              child: Image.asset(widget.img, fit: BoxFit.fill)))
+                              height: height / 10,
+                              width: width / 6,
+                              child: Image.asset(widget.img)))
                     ]),
                     Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
