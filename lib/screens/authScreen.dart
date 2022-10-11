@@ -1,4 +1,5 @@
 import 'package:desafio_2/screens/homeScreen.dart';
+import 'package:desafio_2/screens/mainScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -81,7 +82,9 @@ class _AuthScreenState extends State<AuthScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomeScreen()))
+                                builder: (context) => MainScreen(
+                                      username: widget._name,
+                                    )))
                       },
                   child: Text('Start Ordering')),
             ),
