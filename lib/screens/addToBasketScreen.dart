@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../components/back_button.dart';
+import '../providers/cartProvider.dart';
 
 class AddToBasketScreen extends StatefulWidget {
   final String title;
   int quantity = 0;
+  final String image;
   final String price;
   final List ingredients;
   final String description;
 
   AddToBasketScreen(
       {super.key,
+      required this.image,
       required this.title,
       required this.price,
       required this.ingredients,
@@ -72,18 +78,7 @@ class upperPart extends StatelessWidget {
                           top: constraints.maxHeight * .14,
                           left: constraints.maxWidth * 0.064,
                           right: constraints.maxWidth * .7),
-                      child: ElevatedButton.icon(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.black,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(100))),
-                          icon: Icon(Icons.arrow_back_ios),
-                          label: Text(
-                            'Go Back',
-                            style: TextStyle(fontSize: 12),
-                          )),
+                      child: backButton(),
                     ),
                     Padding(
                         padding: EdgeInsets.only(
