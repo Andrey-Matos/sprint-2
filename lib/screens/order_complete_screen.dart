@@ -15,7 +15,7 @@ class OrderCompleteScreen extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(top: 150),
-              child: Image.asset('assets/images/order_compelte.png'),
+              child: Image.asset('assets/images/order_complete.png'),
             ),
             Padding(
               padding: EdgeInsets.only(top: 150),

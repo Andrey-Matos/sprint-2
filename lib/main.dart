@@ -1,6 +1,7 @@
 import 'package:desafio_2/providers/cartProvider.dart';
 import 'package:desafio_2/screens/addToBasketScreen.dart';
 import 'package:desafio_2/screens/mainScreen.dart';
+import 'package:desafio_2/screens/order_complete_screen.dart';
 import 'package:desafio_2/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +29,6 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            home: Splash()));
+            home: OrderCompleteScreen()));
   }
 }

@@ -6,7 +6,6 @@ import '../providers/cartProvider.dart';
 
 class AddToBasketScreen extends StatefulWidget {
   final String title;
-  int quantity = 0;
   final String image;
   final String price;
   final List ingredients;
@@ -25,7 +24,6 @@ class AddToBasketScreen extends StatefulWidget {
 }
 
 class _AddToBasketScreenState extends State<AddToBasketScreen> {
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -182,7 +180,7 @@ class BottomPart extends StatelessWidget {
                                 padding: EdgeInsets.only(
                                     left: constraints.maxWidth * 0.3),
                                 child: Text(
-                                  '\$ ${cartProvider.getPlateTotal.toString()}',
+                                  '\$ ${2000}',
                                   style: TextStyle(fontSize: 32),
                                 ),
                               )
@@ -258,7 +256,9 @@ class BottomPart extends StatelessWidget {
                                 radius: 16,
                                 child: IconButton(
                                   padding: EdgeInsets.zero,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
                                   icon: Icon(
                                     Icons.favorite_outline,
                                     color: Color.fromARGB(255, 255, 164, 81),

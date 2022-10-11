@@ -23,7 +23,10 @@ class _MainScreenState extends State<MainScreen> {
         padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            const SizedBox(height: 24),
+            const SizedBox(
+              height: 24,
+              child: Text('search'),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

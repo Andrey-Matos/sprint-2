@@ -61,11 +61,6 @@ class CartProvider with ChangeNotifier {
     _cartList = [];
   }
 
-  set init(value) {
-    _totalPrice = _platePriceSum = 0;
-    notifyListeners();
-  }
-
   void increment() {
     _quantity++;
     _platePriceSum = _platePrice * _quantity;
