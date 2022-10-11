@@ -4,8 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AuthScreen extends StatefulWidget {
-  final TextEditingController _name = TextEditingController();
-
   AuthScreen({Key? key}) : super(key: key);
 
   @override
@@ -13,18 +11,22 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+  final TextEditingController _nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           Container(
-            height: 450,
+            height: MediaQuery.of(context).size.height * .52,
             width: double.infinity,
             decoration: BoxDecoration(color: Color.fromARGB(255, 255, 164, 81)),
             child: Stack(alignment: Alignment.center, children: [
               Container(
-                margin: EdgeInsets.only(top: 155, bottom: 54),
+                margin: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * .15,
+                    bottom: MediaQuery.of(context).size.height * .07),
                 child: Image.asset(
                   'assets/images/esse.png',
                 ),
@@ -36,11 +38,8 @@ class _AuthScreenState extends State<AuthScreen> {
             children: [
               Padding(
                 padding: EdgeInsets.only(left: 24, top: 40.0, right: 52),
-                child: TextField(
-                  controller: widget._name,
-                  textAlign: TextAlign.start,
-                  decoration:
-                      InputDecoration(labelText: 'What is your first name?'),
+                child: Text(
+                  "What is your firstname?",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
               ),
@@ -50,12 +49,12 @@ class _AuthScreenState extends State<AuthScreen> {
                     width: 327,
                     height: 56,
                     child: TextField(
+                      controller: _nameController,
                       textAlign: TextAlign.start,
                       decoration: InputDecoration(
                           filled: true,
                           fillColor: Color.fromARGB(255, 247, 245, 245),
                           border: OutlineInputBorder(
-                            // width: 0.0 produces a thin "hairline" border
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0)),
                             borderSide: BorderSide.none,
@@ -82,9 +81,8 @@ class _AuthScreenState extends State<AuthScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MainScreen(
-                                      username: widget._name,
-                                    )))
+                                builder: (context) =>
+                                    MainScreen(_nameController.text)))
                       },
                   child: Text('Start Ordering')),
             ),

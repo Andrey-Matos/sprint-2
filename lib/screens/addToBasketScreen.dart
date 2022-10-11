@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter/scheduler.dart';
 import '../components/back_button.dart';
 import '../providers/cartProvider.dart';
 
@@ -25,6 +25,7 @@ class AddToBasketScreen extends StatefulWidget {
 }
 
 class _AddToBasketScreenState extends State<AddToBasketScreen> {
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

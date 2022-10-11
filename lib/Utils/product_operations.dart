@@ -1,10 +1,19 @@
 class ProductOperations {
-  List getList(Map productMap) {
+  static List getList(Map productMap) {
     return productMap.values.toList();
   }
 
-  String priceSum(List productList) {
+  static int priceSum(List productList) {
     int result = productList.fold(0, (t, e) => t + int.parse(e['price']));
-    return '${result}';
+    return result;
   }
+
+/*
+  static List getProdCardList(Map productMap) {
+    List temp = [];
+    getList(productMap)
+        .forEach((e) => temp.add({e['title'], e['image'], e['price']}));
+    return temp;
+  }
+  */
 }
